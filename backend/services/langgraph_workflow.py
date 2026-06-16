@@ -26,8 +26,14 @@ embeddings = HuggingFaceInferenceAPIEmbeddings(
 )
 
 # LOAD VECTOR STORE
+# Get the absolute path to the folder this file lives in
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Build the path to vectorstore relative to THIS file, not the working directory
+VECTORSTORE_PATH = os.path.join(BASE_DIR, "..", "vectorstore")
+
 vector_db = FAISS.load_local(
-    "vectorstore",
+    VECTORSTORE_PATH,
     embeddings,
     allow_dangerous_deserialization=True
 )
