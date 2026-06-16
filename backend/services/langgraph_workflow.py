@@ -21,7 +21,7 @@ TOP_K = int(
 
 # LOAD EMBEDDINGS
 embeddings = HuggingFaceInferenceAPIEmbeddings(
-    api_key=os.getenv("HF_API_KEY")
+    api_key=os.getenv("HF_API_KEY"),
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
