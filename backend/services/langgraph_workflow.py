@@ -11,7 +11,7 @@ from langchain_groq import ChatGroq
 
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import (
-    HuggingFaceEmbeddings
+    HuggingFaceInferenceAPIEmbeddings
 )
 
 # CONFIG
@@ -20,7 +20,8 @@ TOP_K = int(
 )
 
 # LOAD EMBEDDINGS
-embeddings = HuggingFaceEmbeddings(
+embeddings = HuggingFaceInferenceAPIEmbeddings(
+    api_key=os.getenv("HF_API_KEY")
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
